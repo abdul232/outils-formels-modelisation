@@ -44,10 +44,11 @@ let processPools = correctTaskManager.places.filter{$0.name == "processPool"}[0]
 let inProgresss = correctTaskManager.places.filter{$0.name == "inProgress"}[0]
 let complementaryPlaces = correctTaskManager.places.filter{$0.name == "complementaryPlace"}[0]
 // ma correction consiste à rajouter une place complemantaire pour répartir les processus d'une manière qu'elles restent pas bloquées dans inProgress
+// dans notre exemple précéednt la processus bloqué dans inProgress et qui n'a plus de taches à s'associer elle se lie avec la tache stockée dans la place complimantaire.
 let l1 = fails.fire(from: [taskPools: 0, processPools: 0, inProgresss: 1, complementaryPlaces: 1])
 print(l1!)
 /*
- exemple détaillé
+exemple détaillé
 let l1 = creates.fire(from: [taskPools: 0, processPools: 0, inProgresss: 0, complementaryPlaces: 0])
 print(l1!)
 let l2 = spawns.fire(from: l1!)
