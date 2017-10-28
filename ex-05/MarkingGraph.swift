@@ -15,6 +15,36 @@ public class MarkingGraph {
 // Ex. 1: Mutual exclusion
 do {
     // Write your code here ...
+    let l0 = MarkingGraph(marking: ["s0": 1, "s1": 0, "s2": 1, "s3": 0, "s4": 1])
+    let l1 = MarkingGraph(marking: ["s0": 0, "s1": 1, "s2": 0, "s3": 0, "s4": 1])
+    let l2 = MarkingGraph(marking: ["s0": 1, "s1": 0, "s2": 0, "s3": 1, "s4": 0])
+    
+    l0.successors = ["t1": l1, "t3": l2]
+    l1.successors = ["t0": l0]
+    l2.successors = ["t2": l0]
+}
+
+
+
+//public var Marquage = [(MarkingGraph: l0), (MarkingGraph: l1), (MarkingGraph: l2)]
+//parcourirMarquage(mark: Marquage)
+
+func parcourirMarquage(mark: MarkingGraph) -> Int {
+    var res = 0
+    var successor : [MarkingGraph]
+    for m in mark {
+        if(!(successor.contains(m))){
+        successor.append(m)
+    }
+    marking.remove(mark)
+    for m in mark {
+        if(Marquage.contains(m)){
+            parcourirMarquage(mark: m)
+        }
+    }
+    res = res + successor.count
+        
+    }
 }
 
 // Ex. 2: PetriNet 1
