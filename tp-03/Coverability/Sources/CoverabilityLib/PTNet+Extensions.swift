@@ -9,7 +9,6 @@ public extension PTNet {
         let departNode = CoverabilityGraph(marking: marking, successors: [:])
         var AVisite = [CoverabilityGraph]()
         var visite = [CoverabilityGraph]()
-        var counter = 0
         
         // l'initialisation du premier noeud
         AVisite.append(departNode)
@@ -22,11 +21,11 @@ public extension PTNet {
             for trans in transitions {
                 if let actMark = trans.fire(from: toPTMarking(coverabilityMarking: courant.marking)) {
                     if let dejaVisite = visite.first(where: { toPTMarking(coverabilityMarking: $0.marking) == actMark }) {
-                        // rien à faire
+                        courant.successors[trans] = dejaVisite
                     } else {
                         let discovert = CoverabilityGraph(marking: toCoverabilityMarking(ptMarking: actMark), successors: [:])
-                        if (!AVisite.contains(where: { $0.marking == discovert.marking })) {
-                            if (!AVisite.contains(where: { discovert.marking > $0.marking })) {
+                        if (!AVisite.contains(where: { discovert.marking > $0.marking })) {
+                            if (!AVisite.contains(where: { $0.marking == discovert.marking })) {
                                 AVisite.append(discovert)
                                 courant.successors[trans] = discovert
                             }
