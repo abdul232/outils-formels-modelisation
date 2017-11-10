@@ -14,7 +14,7 @@ public class MarkingGraph {
 
 // Ex. 1: Mutual exclusion
 do {
-<<<<<<< HEAD
+/*<<<<<<< HEAD
     let m0 = MarkingGraph(marking: ["s0": 1, "s1": 0, "s2": 1, "s3": 0, "s4": 1])
     let m1 = MarkingGraph(marking: ["s0": 0, "s1": 1, "s2": 0, "s3": 0, "s4": 1])
     let m2 = MarkingGraph(marking: ["s0": 1, "s1": 0, "s2": 0, "s3": 1, "s4": 0])
@@ -22,7 +22,7 @@ do {
     m0.successors = ["t1": m1, "t3": m2]
     m1.successors = ["t0": m0]
     m2.successors = ["t2": m0]
-=======
+=======*/
     // Write your code here ...
     let l0 = MarkingGraph(marking: ["s0": 1, "s1": 0, "s2": 1, "s3": 0, "s4": 1])
     let l1 = MarkingGraph(marking: ["s0": 0, "s1": 1, "s2": 0, "s3": 0, "s4": 1])
@@ -54,7 +54,7 @@ func parcourirMarquage(mark: MarkingGraph) -> Int {
     res = res + successor.count
         
     }
->>>>>>> 496588ff1aebb9d8901a3b72c300bfc07c1b3abe
+//>>>>>>> 496588ff1aebb9d8901a3b72c300bfc07c1b3abe
 }
 
 // Ex. 2: PetriNet 1
