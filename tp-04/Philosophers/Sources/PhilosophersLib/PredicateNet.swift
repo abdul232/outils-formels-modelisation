@@ -116,7 +116,7 @@ public class PredicateTransition<T: Equatable> {
         self.postconditions = postconditions
         self.conditions     = conditions
     }
-
+    //fonction pour chercher les transitions possibles apres respecter
     /// Compute all possible bindings that make the transition fireable from the given marking.
     ///
     /// The idea of the implementation is to create all possible combinations of values we may
@@ -331,7 +331,7 @@ public class PredicateArc<T: Equatable>: Hashable {
     }
 
 }
-
+// <T> type generique 
 public indirect enum PredicateLabel<T: Equatable> {
 
     case variable(Variable)
