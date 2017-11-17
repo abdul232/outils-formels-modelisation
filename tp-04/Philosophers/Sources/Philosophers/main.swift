@@ -50,3 +50,27 @@ do {
         print(m)
     }
 }
+do {
+    enum Ingredients{
+        case p,t,m
+    }
+    enum Smokers{
+        case s1,s2,s3
+    }
+    enum Ref {
+        case arbitr
+    }
+    enum Types {
+        case ingredients(Ingredients)
+        case smokers(Smokers)
+        case reference(Ref)
+    }
+    let s = PredicateTransition<Types>(
+        preconditions: [
+            PredicateArc(place: "i", label: [.variable("x"), .variable("y")]),
+            PredicateArc(place:"s", label: [.variable("s")]),
+            ],
+        postconditions: [
+            PredicateArc(place: "p2", label: [.function(g)]),
+            ])
+}
