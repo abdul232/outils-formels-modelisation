@@ -332,9 +332,7 @@ public class PredicateArc<T: Equatable>: Hashable {
 
 }
 
-// <T> type generique 
-
-
+// <T> type generique
 public enum PredicateLabel<T: Equatable> {
 
     case variable(Variable)
