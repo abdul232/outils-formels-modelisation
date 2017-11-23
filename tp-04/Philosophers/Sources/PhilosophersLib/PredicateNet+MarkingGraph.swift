@@ -12,9 +12,65 @@ extension PredicateNet {
         //
         // You may use these methods to check if you've already visited a marking, or if the model
         // is unbounded.
-
-        return nil
+        var transitions = Array(self.transitions)
+        let departNode = PredicateMarkingNode<T>(marking: marking)
+        var AVisite = [departNode]
+        var Visite = [departNode]
+        // on parcoure tous les marquages
+        while AVisite.count != 0 {
+            // voir un element du marquage
+            let courant = AVisite[0]
+            for trans in 0...(transitions.count-1) {
+                // créer les binding
+                let bindings = transitions[trans].fireableBingings(from: courant.marking)
+                var NouveauBinding : PredicateBindingMap<T> = [:]
+                // on parcoure les binding
+                for binding in bindings {
+                    // on le tire si c'est possible
+                    if let newFire = transitions[trans].fire(from: courant.marking, with: binding) {
+                        let newMark = PredicateMarkingNode<T>(marking: newFire)
+                        // voir si le graphe est bounded
+                        if Visite.contains(where: { PredicateNet.greater(newMark.marking, $0.marking)}) {
+                            return nil
+                        }
+                        // si le marquage n'esiste pas on le rajoute pour le voir
+                        if !Visite.contains(where: { PredicateNet.equals($0.marking, newMark.marking)}) {
+                            AVisite.append(newMark)
+                            Visite.append(newMark)
+                            NouveauBinding[binding] = newMark
+                            //rajouter un successor
+                            courant.successors.updateValue(NouveauBinding, forKey: transitions[trans])
+                        }
+                            // sinon on cherche ses successors
+                        else {
+                            for MARK in Visite {
+                                if PredicateNet.equals(MARK.marking, newMark.marking){
+                                    NouveauBinding[binding] = MARK
+                                    // et on les rajoute
+                                    courant.successors.updateValue(NouveauBinding, forKey: transitions[trans])
+                                    
+                                }
+                            }
+                        }
+                    }
+                    
+                }
+            }
+            // on enlève le marquage qu'on viens de le voir
+            AVisite.remove(at: 0)
+        }
+        return departNode
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     // MARK: Internals
 

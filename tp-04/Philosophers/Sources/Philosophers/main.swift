@@ -1,7 +1,7 @@
 import PetriKit
 import PhilosophersLib
 
-do {
+/*do {
     enum C: CustomStringConvertible {
         case b, v, o
 
@@ -49,8 +49,8 @@ do {
     for m in philosophers.simulation(from: philosophers.initialMarking!).prefix(10) {
         print(m)
     }
-}
-do {
+}*/
+/*do {
     enum Ingredients{
         case p,t,m
     }
@@ -65,6 +65,11 @@ do {
         case smokers(Smokers)
         case reference(Ref)
     }
+    
+    func ing(binding: PredicateTransition<Ingredients>.Binding) -> Ingredients{
+        
+        
+    }
     let s = PredicateTransition<Types>(
         preconditions: [
             PredicateArc(place: "i", label: [.variable("x"), .variable("y")]),
@@ -73,4 +78,28 @@ do {
         postconditions: [
             PredicateArc(place: "p2", label: [.function(g)]),
             ])
+}
+*/
+
+do {
+    let model = lockFreePhilosophers()
+    let graph = model.markingGraph(from: model.initialMarking!)
+    print("nous avons", graph!.count, "marquage dans un modèle non bloquable")
+}
+
+
+do {
+    let model = lockablePhilosophers()
+    let graph = model.markingGraph(from: model.initialMarking!)
+    print("nous avons", graph!.count, "marquage dans un modèle bloquable")
+}
+
+
+do {
+    let model = lockablePhilosophers()
+    let graph = model.markingGraph(from: model.initialMarking!)
+    print("Voilà un exemple faites attention à vos yeux ")
+     for g in graph! {
+         print(g.marking)
+     }
 }

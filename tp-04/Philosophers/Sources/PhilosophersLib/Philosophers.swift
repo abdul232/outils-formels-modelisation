@@ -30,7 +30,7 @@ public enum PhiloType: Hashable, CustomStringConvertible {
 
 }
 
-public func lockFreePhilosophers(n: Int = 3) -> PredicateNet<PhiloType> {
+public func lockFreePhilosophers(n: Int = 5) -> PredicateNet<PhiloType> {
     // A function that returns the left fork of a philosopher.
     func leftFork(bindind: PredicateTransition<PhiloType>.Binding) -> PhiloType {
         guard case let .philosopher(philosopher) = bindind["p"]! else {
@@ -88,7 +88,7 @@ public func lockFreePhilosophers(n: Int = 3) -> PredicateNet<PhiloType> {
         initialMarking: initialMarking)
 }
 
-public func lockablePhilosophers(n: Int = 3) -> PredicateNet<PhiloType> {
+public func lockablePhilosophers(n: Int = 5) -> PredicateNet<PhiloType> {
     // A function that returns the left fork of a philosopher.
     func leftFork(bindind: PredicateTransition<PhiloType>.Binding) -> PhiloType {
         guard case let .philosopher(philosopher) = bindind["p"]! else {

@@ -57,7 +57,7 @@ extension Dictionary where Key == PTPlace, Value == Token {
         return hasGreater
     }
     
-    public static func ==(lhs: Dictionary, rhs: Dictionary) -> Bool {
+    public static func == (lhs: Dictionary, rhs: Dictionary) -> Bool {
         guard lhs.keys == rhs.keys else {
             return false
         }
@@ -76,7 +76,7 @@ extension Dictionary where Key == PTPlace, Value == Token {
         return true
     }
 
-    public static func ==(lhs: Dictionary, rhs: Dictionary) -> Bool {
+    public static func == (lhs: Dictionary, rhs: Dictionary) -> Bool {
         guard lhs.keys == rhs.keys else {
             return false
         }
