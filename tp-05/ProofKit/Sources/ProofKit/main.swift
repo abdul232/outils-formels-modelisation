@@ -47,6 +47,6 @@ let fruityEvaluation = f.eval { (proposition) -> Fruit in
         case "p": return .apple
         case "q": return .orange
         default : return .orange
-    }
+    }/// fix git 
 }
 print(fruityEvaluation)
