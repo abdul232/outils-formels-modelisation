@@ -25,7 +25,7 @@ print(booleanEvaluation)
 //<<<<<<< HEAD
 /*enum Fruit: BooleanAlgebra {
 =======*/
-enum Fruit: BooleanAlgebra {
+/*enum Fruit: BooleanAlgebra {
 //>>>>>>> upstream/master
 
     case apple, orange
@@ -60,8 +60,8 @@ let fruityEvaluation = f.eval { (proposition) -> Fruit in
         default : return .orange
     }
 }
-/*<<<<<<< HEAD
-print(fruityEvaluation)*/
+//<<<<<<< HEAD
+//print(fruityEvaluation)*/
 //=======
-print(fruityEvaluation)
+//print(fruityEvaluation)
 //>>>>>>> upstream/master
