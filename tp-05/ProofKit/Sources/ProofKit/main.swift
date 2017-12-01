@@ -2,10 +2,16 @@ import ProofKitLib
 
 let a: Formula = "a"
 let b: Formula = "b"
+/*<<<<<<< HEAD
 //let c: Formula = "c"
 let f = a && b
 // NNF de f
 print(f.nnf)
+=======*/
+let f = a && b
+
+print(f)
+//>>>>>>> upstream/master
 
 let booleanEvaluation = f.eval { (proposition) -> Bool in
     switch proposition {
@@ -16,7 +22,11 @@ let booleanEvaluation = f.eval { (proposition) -> Bool in
 }
 print(booleanEvaluation)
 
+//<<<<<<< HEAD
 /*enum Fruit: BooleanAlgebra {
+=======*/
+enum Fruit: BooleanAlgebra {
+//>>>>>>> upstream/master
 
     case apple, orange
 
@@ -50,4 +60,8 @@ let fruityEvaluation = f.eval { (proposition) -> Fruit in
         default : return .orange
     }
 }
+/*<<<<<<< HEAD
 print(fruityEvaluation)*/
+//=======
+print(fruityEvaluation)
+//>>>>>>> upstream/master
