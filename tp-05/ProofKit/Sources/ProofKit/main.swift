@@ -2,25 +2,52 @@ import ProofKitLib
 
 let a: Formula = "a"
 let b: Formula = "b"
-/*<<<<<<< HEAD
+let c: Formula = "c"
+//<<<<<<< HEAD
 //let c: Formula = "c"
-let f = a && b
+let f = !(a && (b || c))
+let g = ((!a || b && c) && a)
+let i = (a => b) || !(a && c)
 // NNF de f
+//print(f)
+print("9eme séance d'exercice")
+print("Exercice 2.1")
+print ("forme négative NNF:")
 print(f.nnf)
-=======*/
-let f = a && b
+print("Forme conjoctive CNF:")
+print(f.cnf)
+print("Forme disjoctive DNF:")
+print (f.dnf)
+print("Exercice 2.2")
+print ("forme négative NNF:")
+print(i.nnf)
+print("Forme conjoctive CNF:")
+print(i.cnf)
+print("Forme disjoctive DNF:")
+print(i.dnf)
+print("Exercice 2.3")
+print ("forme négative NNF:")
+print(g.nnf)
+print("Forme conjoctive CNF:")
+print(g.cnf)
+print("Forme disjoctive DNF:")
+print(g.dnf)
 
-print(f)
+
+//=======*/
+//let f = a && b
+
+
 //>>>>>>> upstream/master
 
-let booleanEvaluation = f.eval { (proposition) -> Bool in
+/*let booleanEvaluation = f.eval { (proposition) -> Bool in
     switch proposition {
         case "p": return true
         case "q": return false
         default : return false
     }
 }
-print(booleanEvaluation)
+print(booleanEvaluation)*/
 
 //<<<<<<< HEAD
 /*enum Fruit: BooleanAlgebra {

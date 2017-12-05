@@ -45,6 +45,7 @@ public enum Formula {
 
     /// The negation normal form of the formula.
     public var nnf: Formula {
+       // print(self)
         switch self {
         case .proposition(_):
             return self
@@ -73,14 +74,73 @@ public enum Formula {
     /// The disjunctive normal form of the formula.
     public var dnf: Formula {
         // Write your code here ...
-        return self
+        // on transforme la formule en NNF
+        switch self.nnf {
+        case .proposition(_):
+            return self.nnf
+        case .negation(_):
+            return self.nnf
+            // si on a une disjuction on retourne le dnf des 2 parties de cette dijuction
+        case .disjunction(let a, let b): //si c est une disjonction alors on retourne la disjonction des dnf des deux termes(on voit si c'est possible de les developper)
+            return a.dnf || b.dnf
+            // si on a une conjuction -> on regarde si on peut disribuer avec les disjunctions s'ils existent dans les 2 parties de cette conjuction
+        case .conjunction(let a, let b):
+            // partie gauche
+            switch a.dnf {
+            case .disjunction(let c, let d):
+                return (b && d).dnf || (b && c).dnf
+            default: break
+            }
+            // partie droite
+            switch b.dnf {
+            case .disjunction(let c, let d):
+                return (c && a).dnf || (d && a).dnf
+            default: break
+            }
+            // dans les autres cas on ne peut rien changer du coup on retourne la conjuction
+            return self.cnf
+        // on aura pas d'implication car le nnf l'enlève
+        case .implication(_,_):
+            return self.nnf
+        }
+
     }
 
     /// The conjunctive normal form of the formula.
     public var cnf: Formula {
         // Write your code here ...
-        return self
-    }
+        
+        // on transforme la formule en NNF
+        switch self.nnf {
+        case .proposition(_):
+            return self.nnf
+        case .negation(_):
+            return self.nnf
+            // si on a une conjunction on retourne le cnf des 2 parties de cette conjunction
+        case .conjunction(let a, let b):
+            return a.cnf && b.cnf
+            // si on a une disjunction -> on regarde si on peut disribuer avec les conjunction s'ils existent dans les 2 parties de cette disjunction
+        case .disjunction(let a, let b):
+            // partie gauche
+            switch a.cnf {
+            case .conjunction(let c, let d):
+                return (b || c).cnf && (b || d).cnf
+            default: break
+            }
+            // partie droite
+            switch b.cnf {
+            case .conjunction(let c, let d): //pareil mais avec le terme de droite
+                return (a || c).cnf && (a||d).cnf
+            default: break
+            }
+            // dans les autres cas on ne peut rien changer du coup on retourne la disjunction
+            return self.dnf
+            // on aura pas d'implication car le nnf l'enlève
+        case .implication(_,_):
+            return self.nnf
+
+        }
+}
 
     /// The propositions the formula is based on.
     ///
