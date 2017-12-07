@@ -3,8 +3,6 @@ import ProofKitLib
 let a: Formula = "a"
 let b: Formula = "b"
 let c: Formula = "c"
-//<<<<<<< HEAD
-//let c: Formula = "c"
 let f = !(a && (b || c))
 let g = ((!a || b && c) && a)
 let i = (a => b) || !(a && c)
@@ -33,13 +31,7 @@ print(g.cnf)
 print("Forme disjoctive DNF:")
 print(g.dnf)
 
-
-//=======*/
 //let f = a && b
-
-
-//>>>>>>> upstream/master
-
 /*let booleanEvaluation = f.eval { (proposition) -> Bool in
     switch proposition {
         case "p": return true
@@ -49,13 +41,9 @@ print(g.dnf)
 }
 print(booleanEvaluation)*/
 
-//<<<<<<< HEAD
 /*enum Fruit: BooleanAlgebra {
-=======*/
-/*enum Fruit: BooleanAlgebra {
-//>>>>>>> upstream/master
 
-    case apple, orange
+ case apple, orange
 
     static prefix func !(operand: Fruit) -> Fruit {
         switch operand {
@@ -86,9 +74,6 @@ let fruityEvaluation = f.eval { (proposition) -> Fruit in
         case "q": return .orange
         default : return .orange
     }
-}
-//<<<<<<< HEAD
-//print(fruityEvaluation)*/
-//=======
+}*/
 //print(fruityEvaluation)
-//>>>>>>> upstream/master
+

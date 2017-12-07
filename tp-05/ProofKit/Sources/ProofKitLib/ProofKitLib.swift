@@ -97,13 +97,11 @@ public enum Formula {
                 return (c && a).dnf || (d && a).dnf
             default: break
             }
-            // dans les autres cas on ne peut rien changer du coup on retourne la conjuction
-            return self.cnf
+            // dans les autres cas on ne peut rien changer
+            default: break
         // on aura pas d'implication car le nnf l'enlève
-        case .implication(_,_):
-            return self.nnf
         }
-
+     return self.nnf
     }
 
     /// The conjunctive normal form of the formula.
@@ -133,13 +131,11 @@ public enum Formula {
                 return (a || c).cnf && (a||d).cnf
             default: break
             }
-            // dans les autres cas on ne peut rien changer du coup on retourne la disjunction
-            return self.dnf
-            // on aura pas d'implication car le nnf l'enlève
-        case .implication(_,_):
-            return self.nnf
-
+            // dans les autres cas on ne peut rien changer
+            default: break
+            // on aura jamais d'implication car le nnf l'enlève
         }
+         return self.nnf
 }
 
     /// The propositions the formula is based on.
